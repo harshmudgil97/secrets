@@ -27,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/secrets-userdb",
+mongoose.connect(process.env.mongoUrl,
 {
   useNewUrlParser:true,
   useUnifiedTopology: true
@@ -196,7 +196,7 @@ app.get("/logout",(req,res)=>{
   res.redirect("/");
 });
 
-app.listen(3000,()=>{
+app.listen(process.env.PORT || 3000,()=>{
   console.log("server running");
 });
 
